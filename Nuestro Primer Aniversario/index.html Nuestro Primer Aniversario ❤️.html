@@ -1,0 +1,1417 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PRIMER ANIVERSARIO ❤️</title>
+
+<style>
+
+/* =========================================================
+   CONFIGURACIÓN GENERAL
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    font-family: Georgia, "Times New Roman", serif;
+    background: #eadfe1;
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+
+/* =========================================================
+   PORTADA
+========================================================= */
+
+.portada {
+    position: fixed;
+    inset: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background:
+        linear-gradient(
+            rgba(0,0,0,.45),
+            rgba(0,0,0,.55)
+        ),
+        url("https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=2000&q=90");
+
+    background-size: cover;
+    background-position: center;
+
+    z-index: 1000;
+
+    transition:
+        opacity 1s ease,
+        visibility 1s ease;
+}
+
+.portada.oculta {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   CONTENIDO DE PORTADA
+========================================================= */
+
+.portada-contenido {
+    width: 90%;
+    max-width: 750px;
+
+    text-align: center;
+
+    color: white;
+
+    animation: aparecer 2s ease;
+}
+
+.corazon-portada {
+    font-size: 75px;
+    animation: latido 1.5s infinite;
+}
+
+.portada h1 {
+    font-size: clamp(60px, 10vw, 110px);
+
+    font-weight: normal;
+
+    margin: 10px 0 20px;
+
+    text-shadow:
+        0 5px 20px rgba(0,0,0,.8);
+}
+
+.portada p {
+    font-size: clamp(18px, 3vw, 25px);
+
+    line-height: 1.6;
+
+    margin-bottom: 40px;
+
+    text-shadow:
+        0 3px 10px rgba(0,0,0,.8);
+}
+
+
+/* =========================================================
+   BOTÓN ABRIR
+========================================================= */
+
+#abrirCarta {
+    border: none;
+
+    padding: 17px 40px;
+
+    border-radius: 50px;
+
+    background: white;
+
+    color: #8b1e3f;
+
+    font-size: 19px;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.4);
+
+    transition: .3s;
+}
+
+#abrirCarta:hover {
+    transform: scale(1.08);
+
+    background: #ffe8ee;
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.5);
+}
+
+
+/* =========================================================
+   CONTENEDOR DEL LIBRO
+========================================================= */
+
+.libro-contenedor {
+    width: 100%;
+
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: flex-start;
+
+    padding: 30px 30px 110px;
+}
+
+
+/* =========================================================
+   LIBRO
+========================================================= */
+
+.libro {
+    position: relative;
+
+    width: min(900px, 90vw);
+
+    height: auto;
+
+    perspective: 2500px;
+}
+
+
+/* =========================================================
+   HOJAS
+========================================================= */
+
+.hoja {
+    position: relative;
+
+    width: 100%;
+
+    min-height: 620px;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,0,0,.03),
+            transparent 8%,
+            transparent 92%,
+            rgba(0,0,0,.04)
+        ),
+        #fffaf3;
+
+    border-radius: 5px;
+
+    padding: 45px 45px 70px;
+
+    box-shadow:
+        0 12px 35px rgba(0,0,0,.25);
+
+    display: none;
+
+    flex-direction: column;
+
+    justify-content: flex-start;
+
+    align-items: center;
+
+    text-align: center;
+
+    overflow: visible;
+
+    animation: aparecerPagina .5s ease;
+}
+
+
+/*
+   SOLAMENTE LA PÁGINA ACTUAL SE MUESTRA.
+*/
+
+.hoja.activa {
+    display: flex;
+}
+
+
+/* =========================================================
+   ANIMACIÓN DE CAMBIO DE PÁGINA
+========================================================= */
+
+@keyframes aparecerPagina {
+
+    from {
+        opacity: 0;
+        transform: translateX(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+}
+
+
+/* =========================================================
+   TÍTULOS
+========================================================= */
+
+.hoja h2 {
+    color: #8b1e3f;
+
+    font-size: 42px;
+
+    font-weight: normal;
+
+    margin-bottom: 25px;
+}
+
+.hoja h3 {
+    color: #8b1e3f;
+
+    font-size: 32px;
+
+    font-weight: normal;
+
+    margin-bottom: 20px;
+}
+
+
+/* =========================================================
+   TEXTO
+========================================================= */
+
+.hoja p {
+    max-width: 700px;
+
+    width: 100%;
+
+    color: #4b3b3d;
+
+    font-size: 19px;
+
+    line-height: 1.8;
+
+    margin: 8px 0;
+
+    overflow-wrap: anywhere;
+
+    word-break: normal;
+}
+
+
+/* =========================================================
+   FOTOGRAFÍAS
+   PÁGINAS 4, 5, 7 Y 8
+========================================================= */
+
+/* Página 4 */
+.hoja:nth-child(4) img {
+    width: auto;
+
+    max-width: 100%;
+
+    height: auto;
+
+    max-height: 500px;
+
+    object-fit: cover;
+
+    object-position: center;
+
+    display: block;
+
+    margin: 12px auto;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.2);
+}
+
+
+/* Página 5 */
+.hoja:nth-child(5) img {
+    width: auto;
+
+    max-width: 100%;
+
+    height: auto;
+
+    max-height: 500px;
+
+    object-fit: cover;
+
+    object-position: center;
+
+    display: block;
+
+    margin: 12px auto;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.2);
+}
+
+
+/* Página 7 */
+.hoja:nth-child(7) .galeria {
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
+}
+
+.hoja:nth-child(7) .galeria img {
+    width: auto;
+
+    max-width: 45%;
+
+    height: auto;
+
+    max-height: 250px;
+
+    object-fit: cover;
+
+    object-position: center;
+
+    display: block;
+
+    margin: 0;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.2);
+}
+
+
+/* Página 8 */
+.hoja:nth-child(8) img {
+    width: auto;
+
+    max-width: 100%;
+
+    height: auto;
+
+    max-height: 500px;
+
+    object-fit: cover;
+
+    object-position: center;
+
+    display: block;
+
+    margin: 12px auto;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.2);
+}
+
+
+/* =========================================================
+   FRASE ESPECIAL
+========================================================= */
+
+.frase-grande {
+    color: #8b1e3f;
+
+    font-size: 30px !important;
+
+    font-style: italic;
+
+    line-height: 1.6 !important;
+
+    margin: 25px auto !important;
+}
+
+
+/* =========================================================
+   DECORACIÓN
+========================================================= */
+
+.decoracion {
+    font-size: 45px;
+
+    margin: 10px 0 20px;
+}
+
+
+/* =========================================================
+   NÚMERO DE PÁGINA
+========================================================= */
+
+.numero {
+    position: absolute;
+
+    bottom: 22px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    color: #9c8588;
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   CONTROLES
+========================================================= */
+
+.controles {
+    position: fixed;
+
+    bottom: 20px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    z-index: 3000;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    background: rgba(255,255,255,.25);
+
+    padding: 5px;
+
+    border-radius: 40px;
+}
+
+.controles button {
+    border: none;
+
+    padding: 12px 25px;
+
+    border-radius: 30px;
+
+    background: #8b1e3f;
+
+    color: white;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    transition: .3s;
+}
+
+.controles button:hover {
+    transform: scale(1.05);
+
+    background: #a82b51;
+}
+
+.controles button:disabled {
+    opacity: .35;
+
+    cursor: not-allowed;
+
+    transform: none;
+}
+
+
+/* =========================================================
+   CONTADOR
+========================================================= */
+
+.contador {
+    color: #8b1e3f;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    background: rgba(255,255,255,.9);
+
+    padding: 9px 15px;
+
+    border-radius: 20px;
+}
+
+
+/* =========================================================
+   CORAZONES FLOTANTES
+========================================================= */
+
+.corazones {
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 1;
+}
+
+.corazones span {
+    position: absolute;
+
+    bottom: -40px;
+
+    animation: subir 8s linear infinite;
+
+    opacity: .5;
+}
+
+.corazones span:nth-child(1) {
+    left: 5%;
+    font-size: 22px;
+    animation-delay: 1s;
+}
+
+.corazones span:nth-child(2) {
+    left: 20%;
+    font-size: 30px;
+    animation-delay: 4s;
+}
+
+.corazones span:nth-child(3) {
+    left: 40%;
+    font-size: 20px;
+    animation-delay: 2s;
+}
+
+.corazones span:nth-child(4) {
+    left: 60%;
+    font-size: 35px;
+    animation-delay: 5s;
+}
+
+.corazones span:nth-child(5) {
+    left: 78%;
+    font-size: 25px;
+    animation-delay: 3s;
+}
+
+.corazones span:nth-child(6) {
+    left: 92%;
+    font-size: 20px;
+    animation-delay: 6s;
+}
+
+
+/* =========================================================
+   ANIMACIONES
+========================================================= */
+
+@keyframes aparecer {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+
+}
+
+@keyframes latido {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.18);
+    }
+
+}
+
+@keyframes subir {
+
+    0% {
+        transform:
+            translateY(0)
+            rotate(0deg);
+
+        opacity: 0;
+    }
+
+    15% {
+        opacity: .6;
+    }
+
+    85% {
+        opacity: .6;
+    }
+
+    100% {
+        transform:
+            translateY(-110vh)
+            rotate(360deg);
+
+        opacity: 0;
+    }
+
+}
+
+
+/* =========================================================
+   CELULAR
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .libro-contenedor {
+        padding: 15px 15px 100px;
+    }
+
+    .libro {
+        width: 94vw;
+    }
+
+    .hoja {
+        min-height: 72vh;
+
+        padding: 25px 20px 60px;
+    }
+
+    .hoja h2 {
+        font-size: 31px;
+    }
+
+    .hoja h3 {
+        font-size: 25px;
+    }
+
+    .hoja p {
+        font-size: 16px;
+
+        line-height: 1.6;
+    }
+
+
+    /* =====================================================
+       FOTOS PÁGINAS 4, 5 Y 8 EN CELULAR
+    ===================================================== */
+
+    .hoja:nth-child(4) img,
+    .hoja:nth-child(5) img,
+    .hoja:nth-child(8) img {
+
+        width: auto;
+
+        max-width: 100%;
+
+        height: auto;
+
+        max-height: none;
+
+        object-fit: cover;
+
+        object-position: center;
+
+        display: block;
+
+        margin: 12px auto;
+    }
+
+
+    /* =====================================================
+       GALERÍA PÁGINA 7 EN CELULAR
+    ===================================================== */
+
+    .hoja:nth-child(7) .galeria {
+        gap: 7px;
+    }
+
+    .hoja:nth-child(7) .galeria img {
+
+        width: auto;
+
+        max-width: 47%;
+
+        height: auto;
+
+        max-height: 180px;
+
+        object-fit: cover;
+
+        object-position: center;
+
+        margin: 0;
+    }
+
+
+    .frase-grande {
+        font-size: 22px !important;
+    }
+
+    .controles {
+        bottom: 10px;
+
+        gap: 7px;
+
+        max-width: 95vw;
+    }
+
+    .controles button {
+        padding: 10px 14px;
+
+        font-size: 14px;
+    }
+
+    .contador {
+        font-size: 13px;
+
+        padding: 8px 10px;
+    }
+
+}
+
+
+/* =========================================================
+   PANTALLAS BAJAS
+========================================================= */
+
+@media (max-height: 650px) {
+
+    .hoja {
+        padding-top: 25px;
+    }
+
+    .hoja img {
+        max-height: 170px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- =====================================================
+     PORTADA
+===================================================== -->
+
+<section class="portada" id="portada">
+
+    <div class="portada-contenido">
+
+        <div class="corazon-portada">
+            ❤️
+        </div>
+
+        <h1>
+            PARA TI AMOR DE MI VIDA
+        </h1>
+
+        <p>
+            Unas pequeñas palabras
+            para ti...
+        </p>
+
+        <button id="abrirCarta">
+            Abrir carta 💌
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     LIBRO
+===================================================== -->
+
+<main class="libro-contenedor">
+
+    <div class="libro" id="libro">
+
+
+        <!-- HOJA 1 -->
+
+        <section class="hoja">
+
+            <div class="decoracion">
+                ❤️
+            </div>
+
+            <h2>
+                Unas palabras para ti
+            </h2>
+
+            <p class="frase-grande">
+                "Desde ese dia que te conoci y que duramos toda la noche hablando no me iba imaginar que pasarian tantas cosas bonitas y que se volverian unicas ese dia fue tan bonito que nunca lo voy olvidar donde tuvimos una conexion y que poco a poco empezamos a estar mas juntos."
+            </p>
+
+            <p>
+                Espero que cada página te recuerde
+                lo especial que eres y te volviste lo mas bonito que llegaste a mi vida.
+            </p>
+
+            <div class="numero">
+                1
+            </div>
+
+        </section>
+
+
+        <!-- HOJA 2 -->
+
+        <section class="hoja">
+
+            <div class="decoracion">
+                💌
+            </div>
+
+            <h3>
+                Quiero comenzar...
+            </h3>
+
+            <p>
+                Hay personas que llegan a nuestra vida y se convierten en alguien tan especial tanto en momentos, tiempo o el lugar se siente algo muy bonito saber que esa persona esta contigo en todo momento se vulve unico.
+            </p>
+
+            <p>
+                Tu te convertiste en la mujer que un dia imagine con todo lo que buscaba ademas con una personalidad unica que es dificil enocntrar en alguien pero tu desde el primer momento se sientio esa conexion super bonita que nunca olvido esa noche tan hermosa contigo.
+            </p>
+
+            <p>
+                Siempre me gusta recordar o contarte esa historia de como tu y yo empezamos a conocernos y cada dia a estar mas unidos querer hacer mas llamadas, mas horas juntos sin mirar el tiempo siempre queriamos estar todo el tiempo sin alejarnos ningun momento fuera donde fuera siempre estabamos comunicados algo que nos unio cada dia que pasaba.
+            </p>
+
+            <p>
+                Esta carta es para recordar algunos
+                de esos momentos y decir todo aquello
+                que a veces queda guardado y no te termino diciendo mi niña hermosa.
+            </p>
+
+            <div class="numero">
+                2
+            </div>
+
+        </section>
+
+
+        <!-- HOJA 3 -->
+
+        <section class="hoja">
+
+            <h3>
+                Nuestra historia de como empezamos a construir
+            </h3>
+
+            <p>
+                Aqui realmente es donde decidi pedrile a la niña que se robo mi corazon y me movio el mundo de una manera tan bonita que dije si o si tengo que pedirle que sea mi novia y claramente dije tiene que ser de una forma especial para conquistarla esa historia tambien es un muy bonito recuerdo.
+            </p>
+
+            <p>
+                desde que llegaste a mi vida mis dias, semanas y meses se convirtieron en estar contigo en todo momento no querer estar lejos de ti sentirte, escucharte, verte, compartir, jugar hasta para dormir te queria cerca ya no podia pasar ni un solo dia sin saber de ti por que siempre me faltaba y claramente eras tu mi compania en quien se convirtio en alguien muy importante.
+            </p>
+
+            <p>
+                Tambien llegaste cuando menos lo pensaba de una manera que no me imaginaba que ibas a impactar tanto en mi y que te iba amar y querer mucho de lo que te imaginas te llevaste toda mi atencion desde el primer momento me hciste sentir unico contigo y a tu lado especial muchas emociones como felicidad, alegria, nervios sentimientos bonitos de saber que tu serias la mujer que seria mi dia a dia y mis noches largas que disfruto cada una de ellas y se convierten en momentos diferentes al resto y mas pasadolas a tu lado.
+            </p>
+
+            <div class="numero">
+                3
+            </div>
+
+        </section>
+
+
+        <!-- HOJA 4 -->
+
+        <section class="hoja">
+
+            <h3>
+                Nuestro primer recuerdo 📸
+            </h3>
+
+            <img
+                src="/fotos/WhatsApp Image 2026-09-24 at 6.01.43 PM.jpeg"
+                alt="Primer recuerdo">
+
+            <p>
+                Esta foto fue un momento especial cuando la hiciste por que aunque no estuvieramos juntos la creaste con cariño y fue algo muy bonito que se hizo con una foto tuya y una mia y las combinaste para que se hiciera una foto los dos juntos y se sientio especial ese trato que tuviste conmigo.
+            </p>
+
+            <p>
+                la foto que tenemos los dos siempre he pensado que es muy tierna y bonita por la forma que nos veriamos juntos teniendo muchas fotos compartiendo momentos que seran inborrables y en fotos quedaran en recuerdos para decir en un futuro te acuerdas de esta foto o de este momento y recordarlo y saber la historia de como paso ese bonito recuerdo contigo yo te amo mucho mi mamacita heromsa.
+            </p>
+
+            <p>
+                Ademas de esta foto tambien hay muchas mas con recuerdos y palabras muy bonitas momentos unicos que solo tu y yo sabemos que imaginamos por que cada momento se vuelven un mundo diferente donde estamos los dos pasando tiempo y sabemos lo felices que somos teniendonos en el uno al otro.
+            </p>
+
+            <div class="numero">
+                4
+            </div>
+
+        </section>
+
+
+        <!-- HOJA 5 -->
+
+        <section class="hoja">
+
+            <h3>
+                Momentos especiales y unicos con el amor de mi vida 🌹
+            </h3>
+
+            <p>
+                Hay momentos pequeños que terminan
+                convirtiéndose en grandes recuerdos y tambien se vuelven inovidables cuando tienes a esa persona que llega a darte un giro tan grande a tu vida que se convierte es lo mas bonito.
+            </p>
+
+            <!-- FOTO 1 -->
+
+            <img
+                src="/fotos/bcd7f644-dcae-4dff-bac8-f44907f158c0.jpg"
+                alt="Momento especial">
+
+            <!-- FOTO 2 -->
+
+            <img
+                src="/fotos/596256f2-2f0d-4bea-a0cf-87eb1a26d717.jpg"
+                alt="Momento especial">
+
+            <p>
+                Aqui quiero describirte como la persona y la mujer que eres para mi, tienes una carita super tierna unos ojitos que brillan tan bonito como el sol una boquita bien perfecta un cabello espectacular ademas de eso tienes un cuerpo divino una maravilla de mujer esas fotos las escogi por que me gustan como te vez como luces como te vez brillante me gusta tu personalidad tu actitud tu froma de pensar algo que destaco mucho es tu inteligencia me fascina eso me vuleve loco de ti mi niña hermosa todo me gusta de ti yo me enamore profundamnte de ti mi amor hermoso y lo seguire una y mil veces de ti hasta el fin del mundo seguire enamorado y loco por ti .
+            </p>
+
+            <div class="numero">
+                5
+            </div>
+
+        </section>
+
+
+        <!-- HOJA 6 -->
+
+        <section class="hoja">
+
+            <div class="decoracion">
+                ❤️
+            </div>
+
+            <h3>
+                Lo que siento y unas palabras bonitas que te quiero expresar mi niña hermosa
+            </h3>
+
+            <p>
+                Desde que tu llegaste a mi vida nunca me habia imaginado tanto el impacto que causarias en mi hacerme sentir emociones, momentos, tiempos, sentimientos, y miles de cosas que solo tu has logrado que yo sienta como verte, escucharte, sonreir, compartir noches enteras, comer juntos, dormir, jugar, hacer rutinas que se volvieron tan especiales y que se convirtieron en nuestro dia a dia una de las cosas mas importantes hacer video llamadas y sentir esa se momento como unico ver nuestras reaciones nuestros gesto nuestras miradas ver como hablas como miras como te mueves todo atravez de una pantalla donde yo te siento como si estuvieras a mi lado y amo disfrutar contigo cada momento que comparto en mi vida.
+            </p>
+
+            <p>
+                contigo quiero hacer y cumplir cada cosa que hemos hablando que hemos dicho planeado imaginado ya que tu eres la mujer con la que me quiero quedar toda mi vida y puedo decir con mucho orgullo que me enamore de una mujer tan increible tan espectacular tan bonita con unos sentimientos tan prefundos un amor que de muestra muchas cosas bonitas el trato la forma que me dedicas tu tiempo en la que me compartes tu vida dia tras dia tu eres todo lo que quiero y lo que busco ya contgio me gane el mundo tu eres mi todo en uno. en el futuro hacer viajes hacer una familia donde los dos como mas que una pareja nos convirtamos en esposos y decir ella es mi esposa y es la mujer con la que soñe y busque toda mi vida tu siempre seras la indicada y la mujer con la que quiero cumplir todos mis sueños y logros pero que tu estes presente y poder decir ella siempre estuvo conmigo en todo momento recuerda tu eres el amor de mi vida y lo seras.
+            </p>
+
+            <p>
+                Tu eres todas estas palabras bonitas MI NIÑA HERMOSA, MI NOVIA, MI PAREJA, MI AMANTE, MI ESPOSA QUE EN EL FUTURO LO SERAS TENDRMOS NUESTRA BODA, MI MAMACITA HERMOSA, LA NIÑA DE MIS OJOS, MI COMPAÑERA DE MI VIDA CON QUIEN ESTUVE EN LAS BUENAS Y MALAS,MI MUNDO Y POR ULTIMO EL AMOR DE MI VIDA Y MI REGALO MAS BONITO QUE LA VIDA ME PUDO DAR CONOCERTE Y HACER UNA HISTORIA CON LA MUJER MAS HERMOSA DE ESTE MUNDO recuerda eres, fuiste y seras el amor de mi vida siempre en todos los munods y galaxias TE AMO COMO NO TE IMAGINAS DE UNA MANERA UNICA Y EXCLSUIVA QUE SI TE VOLVIERA AVER TE VOLVERIA A ENAMORAR UNA Y MIL VECES AMOR DE MI VIDA TE AMO CON LOCURA MAOR DE MI VIDA,
+            </p>
+
+            <p>
+                Te es escribi en mayucula expresando lo que siento por ti mi mamacita hermosa
+            </p>
+
+            <div class="numero">
+                6
+            </div>
+
+        </section>
+
+
+        <!-- HOJA 7 -->
+
+        <section class="hoja">
+
+            <h3>
+                Nuestros recuerdos y momentos para siempre 📷
+            </h3>
+
+            <div class="galeria">
+
+                <img
+                    src="/fotos/ce93a09f-4a88-4dcc-955b-bea68771f781.jpg"
+                    alt="Aqui mostrandome tu pijama">
+
+                <img
+                    src="/fotos/a19f8edb-8f9c-45f8-8465-224441344031.jpg"
+                    alt="Aqui te vez bien hermosa y preciosa">
+
+                <img
+                    src="/fotos/d23ca36f-7bbf-44bb-b9a8-b3a9e616404c.jpg"
+                    alt="Aqui durmiendo y te estoy acompañando">
+
+                <img
+                    src="/fotos/f39dffb5-776d-47d2-abdc-a7cbf5c4a614.jpg"
+                    alt="Jugando">
+
+                <img
+                    src="/fotos/d790ef60-a338-46b9-99f6-046ed59aaf00.jpg"
+                    alt="La primera foto que tuve de ti">
+
+            </div>
+
+            <p>
+                Aqui varios momentos o recuerdos que tengo contigo como el dia de tu graduacion que fue super bonito verte un logro de la mujer que amo tambien verte dormir ver como te quedan tus pijamas cuando te pones ropa bien bonita verte recien levantada y decirte lo preciosa y hermosa que te vez mi mamacita bonitos recuerdos contigo.
+            </p>
+
+            <div class="numero">
+                7
+            </div>
+
+        </section>
+
+
+        <!-- HOJA 8 -->
+
+        <section class="hoja">
+
+            <div class="decoracion">
+                ✨
+            </div>
+
+            <h3>
+                Una página especial y recuerdo muy importante 🎓
+            </h3>
+
+            <p class="frase-grande">
+                "Aqui es un dia muy importante y quiero hacertelo recordar ya que tu me invitaste hacer parte de uno de tus metas y logros mas importantes que has tenido ese dia te veias tan hermosa con tu traje de graduacion super elegante esperando tu momento para recibir tu noticia de que eras licenciada en psicologia entoces hago un recordatorio bonito haciendote una parte especial de lo que lograste durante este primer aniversario juntos amor de mi vida"
+            </p>
+
+            <img
+                src="/fotos/d3dff91e-1cc0-4819-b934-0021daae1c6f.jpg"
+                alt="Página especial">
+
+            <div class="numero">
+                8
+            </div>
+
+        </section>
+
+
+        <!-- HOJA 9 -->
+
+        <section class="hoja">
+
+            <div class="decoracion">
+                💕
+            </div>
+
+            <h3>
+                Antes de terminar te digo estas ultimas ...
+            </h3>
+
+            <p>
+                Quiero que sepas que cada palabra
+                escrita en estas páginas tiene un un signifcado muy importante que sale de mi corazon y alma y son dedicadas especialamnte para ti amor mio.
+            </p>
+
+            <p>
+                aqui te dire unas cositas entre tu y yo quiero pedirte perdon por mcuhas cosas que han pasado errores malos entendios malos tratos yo quiero ofrecerte una grande disculpa por que eso no deberia pasar en una relacion y aqui te las vengoa decir por que al final de todo yo quiero que seas tu y entenderte a quererte con errores con las inperfeciones y demas cosas que tienes yo te amo asi y asi te amare pero en mis ojos te vere perfecta mi niña hermosa  .
+            </p>
+
+            <div class="numero">
+                9
+            </div>
+
+        </section>
+
+
+        <!-- HOJA 10 -->
+
+        <section class="hoja">
+
+            <div class="decoracion">
+                ❤️
+            </div>
+
+            <h2>
+                Gracias por llegar y aparecer en mi vida mi niña hermosa 💕🌙
+            </h2>
+
+            <p class="frase-grande">
+                "Y aunque esta carta llegue a su última
+                página, espero que nuestra historia
+                continúe escribiendo muchas más sean mas aniversarios juntos muchos momentos, recuerdos, historias, aventuras y muchas mas cosas que nos esperan por hacer y cumplir esto es un inicio que tendra una historia super larga y muchos momentos unicos y especiales que nos esperan amor de mi vida."
+            </p>
+
+            <p>
+                Con mucho amor y cariño, siempre el amor de tu vida tu personita especial . ❤️
+            </p>
+
+            <div class="decoracion">
+                💌
+            </div>
+
+            <div class="numero">
+                10
+            </div>
+
+        </section>
+
+
+    </div>
+
+</main>
+
+
+<!-- =====================================================
+     NAVEGACIÓN
+===================================================== -->
+
+<nav class="controles">
+
+    <button id="anterior" disabled>
+        ← Anterior
+    </button>
+
+    <div class="contador">
+        <span id="paginaActual">1</span>
+        /
+        <span id="totalPaginas">10</span>
+    </div>
+
+    <button id="siguiente">
+        Siguiente →
+    </button>
+
+</nav>
+
+
+<!-- =====================================================
+     CORAZONES
+===================================================== -->
+
+<div class="corazones">
+
+    <span>❤️</span>
+    <span>♥️</span>
+    <span>❤️</span>
+    <span>♥️</span>
+    <span>❤️</span>
+    <span>♥️</span>
+
+</div>
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+const portada = document.getElementById("portada");
+
+const abrirCarta = document.getElementById("abrirCarta");
+
+const hojas = document.querySelectorAll(".hoja");
+
+const botonAnterior = document.getElementById("anterior");
+
+const botonSiguiente = document.getElementById("siguiente");
+
+const numeroPagina = document.getElementById("paginaActual");
+
+const totalPaginas = document.getElementById("totalPaginas");
+
+
+let paginaActual = 0;
+
+const total = hojas.length;
+
+
+/* =========================================================
+   TOTAL DE PÁGINAS
+========================================================= */
+
+totalPaginas.textContent = total;
+
+
+/* =========================================================
+   ABRIR CARTA
+========================================================= */
+
+abrirCarta.addEventListener("click", function() {
+
+    portada.classList.add("oculta");
+
+    paginaActual = 0;
+
+    actualizarLibro();
+
+    window.scrollTo({
+        top: 0,
+        behavior: "instant"
+    });
+
+});
+
+
+/* =========================================================
+   ACTUALIZAR LIBRO
+========================================================= */
+
+function actualizarLibro() {
+
+    /*
+       Ocultamos TODAS las páginas.
+    */
+
+    hojas.forEach(function(hoja) {
+
+        hoja.classList.remove("activa");
+
+    });
+
+
+    /*
+       Mostramos únicamente la página actual.
+    */
+
+    hojas[paginaActual].classList.add("activa");
+
+
+    /*
+       Actualizamos el contador.
+    */
+
+    numeroPagina.textContent =
+        paginaActual + 1;
+
+
+    /*
+       Activamos/desactivamos botones.
+    */
+
+    botonAnterior.disabled =
+        paginaActual === 0;
+
+    botonSiguiente.disabled =
+        paginaActual === total - 1;
+
+
+    /*
+       Siempre empezamos la nueva página
+       desde arriba.
+    */
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+
+/* =========================================================
+   SIGUIENTE
+========================================================= */
+
+botonSiguiente.addEventListener("click", function() {
+
+    if (paginaActual < total - 1) {
+
+        paginaActual++;
+
+        actualizarLibro();
+
+    }
+
+});
+
+
+/* =========================================================
+   ANTERIOR
+========================================================= */
+
+botonAnterior.addEventListener("click", function() {
+
+    if (paginaActual > 0) {
+
+        paginaActual--;
+
+        actualizarLibro();
+
+    }
+
+});
+
+
+/* =========================================================
+   TECLADO
+========================================================= */
+
+document.addEventListener("keydown", function(event) {
+
+    /*
+       Flecha derecha = siguiente
+    */
+
+    if (event.key === "ArrowRight") {
+
+        if (paginaActual < total - 1) {
+
+            paginaActual++;
+
+            actualizarLibro();
+
+        }
+
+    }
+
+
+    /*
+       Flecha izquierda = anterior
+    */
+
+    if (event.key === "ArrowLeft") {
+
+        if (paginaActual > 0) {
+
+            paginaActual--;
+
+            actualizarLibro();
+
+        }
+
+    }
+
+});
+
+
+/* =========================================================
+   INICIAR
+========================================================= */
+
+actualizarLibro();
+
+</script>
+
+</body>
+</html>
